@@ -1,13 +1,13 @@
-package zone.informatik.java.graphics.trans;
+package de.winzermuseum.java.photoshop.trans;
 
-import static zone.informatik.java.graphics.utils.ColourModelRGB.getBlue;
-import static zone.informatik.java.graphics.utils.ColourModelRGB.getRGB;
+import static java.lang.Math.round;
 
 
 /**
- * Extraktion des blauen Farbkanals
+ * Konvertierung eines Farbbildes in ein Graustufenbild
+ * durch Mittelwertbildung
  */
-public class ExtractorBlue implements Transformer
+public class GrayConverterAverage implements Transformer
 {
   /**
    * {@inheritDoc}

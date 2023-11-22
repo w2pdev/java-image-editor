@@ -1,4 +1,4 @@
-package zone.informatik.java.graphics.gui;
+package de.winzermuseum.java.photoshop.gui;
 
 import java.awt.Component;
 import javax.swing.AbstractCellEditor;

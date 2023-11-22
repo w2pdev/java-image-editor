@@ -1,10 +1,10 @@
-package zone.informatik.java.graphics.trans;
+package de.winzermuseum.java.photoshop.trans;
 
 
 /**
- * Rotation in mathematisch positiver Richtung um 90 Grad
+ * Extraktion des roten Farbkanals
  */
-public class RotationLeft implements Transformer
+public class ExtractorRed implements Transformer
 {
   /**
    * {@inheritDoc}
@@ -12,9 +12,8 @@ public class RotationLeft implements Transformer
   @Override
   public int[][] apply(final int[][] input)
   {
-    // bezogen auf das transformierte Bild
-    final int numRows = input[0].length;
-    final int numCols = input.length;
+    final int numRows = input.length;
+    final int numCols = input[0].length;
 
     final int[][] output = new int[numRows][numCols];
 

@@ -1,12 +1,10 @@
-package zone.informatik.java.graphics.trans;
-
-import static zone.informatik.java.graphics.utils.ColourModelRGB.*;
+package de.winzermuseum.java.photoshop.trans;
 
 
 /**
- * Extraktion des grünen Farbkanals
+ * Extraktion des blauen Farbkanals
  */
-public class ExtractorGreen implements Transformer
+public class ExtractorBlue implements Transformer
 {
   /**
    * {@inheritDoc}
@@ -19,7 +17,11 @@ public class ExtractorGreen implements Transformer
 
     final int[][] output = new int[numRows][numCols];
 
-    // TODO
+    for (int i = 0; i < numRows; i++){
+      for (int j = 0; j < numCols; j++){
+        output[i][j] = input [i] [j] + 50;
+      }
+    }
 
     return output;
   }

@@ -1,32 +1,26 @@
-package zone.informatik.java.graphics.gui;
+package de.winzermuseum.java.photoshop.trans;
 
-import java.awt.image.BufferedImage;
+import java.util.function.UnaryOperator;
 
 
 /**
- * Proxy für ein Bild
+ * Schnittstelle für Pixeloperationen
  */
-public interface ImageProxy
+public interface Transformer extends UnaryOperator<int[][]>
 {
-  /** Gibt das Bild zurück.
-   *
-   * @return Bild
-   */
-  BufferedImage getImage();
-
-
   /**
-   * Überschreibt das Bild.
+   * Transformiert eine Pixelgrafik.
    *
-   * @param image neues Bild.
+   * @param input 2D Array mit den originalen Pixelwerten
+   * @return 2D Array mit den transformierten Pixelwerten
    */
-  void setImage(final BufferedImage image);
+  int[][] apply(final int[][] input);
 }
 
 
 /*
 
-This file is part of the zone.informatik.java.graphics.gui package.
+This file is part of the zone.informatik.java.graphics.trans package.
 
 Copyright (C) 2023 Matthias Ebert
 

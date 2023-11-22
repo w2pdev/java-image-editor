@@ -1,4 +1,4 @@
-package zone.informatik.java.graphics.gui;
+package de.winzermuseum.java.photoshop.gui;
 
 import java.awt.GridBagLayout;
 import java.awt.image.BufferedImage;

@@ -1,12 +1,10 @@
-package zone.informatik.java.graphics.trans;
-
-import static zone.informatik.java.graphics.utils.ColourModelRGB.*;
+package de.winzermuseum.java.photoshop.trans;
 
 
 /**
- * Extraktion des roten Farbkanals
+ * Spiegelung des Bildes in horizontaler Richtung
  */
-public class ExtractorRed implements Transformer
+public class ReflectionHorizontal implements Transformer
 {
   /**
    * {@inheritDoc}

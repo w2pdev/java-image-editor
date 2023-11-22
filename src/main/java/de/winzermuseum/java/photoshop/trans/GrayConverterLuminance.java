@@ -1,13 +1,19 @@
-package zone.informatik.java.graphics.trans;
-
-import static java.lang.System.arraycopy;
+package de.winzermuseum.java.photoshop.trans;
 
 
 /**
- * Spiegelung des Bildes in vertikaler Richtung
+ * Konvertierung eines Farbbildes in ein Graustufenbild
+ * mit Gammakorrektur
  */
-public class ReflectionVertical implements Transformer
+public class GrayConverterLuminance implements Transformer
 {
+  private static final double GAMMA = 2.2;
+  private static final double GAMMA_INV = 1.0 / GAMMA;
+  private static final double WEIGHT_RED   = 0.2126;
+  private static final double WEIGHT_GREEN = 0.7152;
+  private static final double WEIGHT_BLUE  = 0.0722;
+
+
   /**
    * {@inheritDoc}
    */

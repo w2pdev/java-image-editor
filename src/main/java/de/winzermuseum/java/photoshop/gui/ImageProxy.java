@@ -1,32 +1,32 @@
-package zone.informatik.java.graphics.trans;
+package de.winzermuseum.java.photoshop.gui;
+
+import java.awt.image.BufferedImage;
 
 
 /**
- * Spiegelung des Bildes in horizontaler Richtung
+ * Proxy für ein Bild
  */
-public class ReflectionHorizontal implements Transformer
+public interface ImageProxy
 {
-  /**
-   * {@inheritDoc}
+  /** Gibt das Bild zurück.
+   *
+   * @return Bild
    */
-  @Override
-  public int[][] apply(final int[][] input)
-  {
-    final int numRows = input.length;
-    final int numCols = input[0].length;
+  BufferedImage getImage();
 
-    final int[][] output = new int[numRows][numCols];
 
-    // TODO
-
-    return output;
-  }
+  /**
+   * Überschreibt das Bild.
+   *
+   * @param image neues Bild.
+   */
+  void setImage(final BufferedImage image);
 }
 
 
 /*
 
-This file is part of the zone.informatik.java.graphics.trans package.
+This file is part of the zone.informatik.java.graphics.gui package.
 
 Copyright (C) 2023 Matthias Ebert
 

@@ -1,4 +1,4 @@
-package zone.informatik.java.graphics.utils;
+package de.winzermuseum.java.photoshop.utils;
 
 
 /**

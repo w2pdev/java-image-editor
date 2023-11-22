@@ -1,18 +1,10 @@
-package zone.informatik.java.graphics.trans;
-
-import static zone.informatik.java.graphics.utils.ColourModelRGB.getRed;
-import static zone.informatik.java.graphics.utils.ColourModelRGB.getGreen;
-import static zone.informatik.java.graphics.utils.ColourModelRGB.getBlue;
-import static zone.informatik.java.graphics.utils.ColourModelRGB.getRGB;
-
-import static java.lang.Math.round;
+package de.winzermuseum.java.photoshop.trans;
 
 
 /**
- * Konvertierung eines Farbbildes in ein Graustufenbild
- * durch Mittelwertbildung
+ * Rotation in mathematisch positiver Richtung um 90 Grad
  */
-public class GrayConverterAverage implements Transformer
+public class RotationLeft implements Transformer
 {
   /**
    * {@inheritDoc}
@@ -20,8 +12,9 @@ public class GrayConverterAverage implements Transformer
   @Override
   public int[][] apply(final int[][] input)
   {
-    final int numRows = input.length;
-    final int numCols = input[0].length;
+    // bezogen auf das transformierte Bild
+    final int numRows = input[0].length;
+    final int numCols = input.length;
 
     final int[][] output = new int[numRows][numCols];
 

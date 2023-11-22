@@ -1,20 +1,26 @@
-package zone.informatik.java.graphics.trans;
-
-import java.util.function.UnaryOperator;
+package de.winzermuseum.java.photoshop.trans;
 
 
 /**
- * Schnittstelle für Pixeloperationen
+ * Extraktion des grünen Farbkanals
  */
-public interface Transformer extends UnaryOperator<int[][]>
+public class ExtractorGreen implements Transformer
 {
   /**
-   * Transformiert eine Pixelgrafik.
-   *
-   * @param input 2D Array mit den originalen Pixelwerten
-   * @return 2D Array mit den transformierten Pixelwerten
+   * {@inheritDoc}
    */
-  int[][] apply(final int[][] input);
+  @Override
+  public int[][] apply(final int[][] input)
+  {
+    final int numRows = input.length;
+    final int numCols = input[0].length;
+
+    final int[][] output = new int[numRows][numCols];
+
+    // TODO
+
+    return output;
+  }
 }
 
 

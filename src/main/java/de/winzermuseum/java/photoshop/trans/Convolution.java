@@ -1,10 +1,4 @@
-package zone.informatik.java.graphics.trans;
-
-import static java.lang.Math.*;
-import static zone.informatik.java.graphics.utils.ColourModelRGB.getRed;
-import static zone.informatik.java.graphics.utils.ColourModelRGB.getGreen;
-import static zone.informatik.java.graphics.utils.ColourModelRGB.getBlue;
-import static zone.informatik.java.graphics.utils.ColourModelRGB.getRGB;
+package de.winzermuseum.java.photoshop.trans;
 
 
 /**

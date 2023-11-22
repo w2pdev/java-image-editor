@@ -1,4 +1,4 @@
-package zone.informatik.java.graphics.gui;
+package de.winzermuseum.java.photoshop.gui;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -11,7 +11,8 @@ import java.util.ResourceBundle;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-import zone.informatik.java.graphics.trans.*;
+import de.winzermuseum.java.photoshop.trans.*;
+import de.winzermuseum.java.photoshop.trans.*;
 
 
 /**

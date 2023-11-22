@@ -1,7 +1,7 @@
-package zone.informatik.java.graphics.gui;
+package de.winzermuseum.java.photoshop.gui;
 
-import zone.informatik.java.graphics.trans.Transformer;
-import zone.informatik.java.graphics.utils.ImageConverter;
+import de.winzermuseum.java.photoshop.utils.ImageConverter;
+import de.winzermuseum.java.photoshop.trans.Transformer;
 
 import javax.swing.JOptionPane;
 import javax.swing.SwingWorker;

@@ -1,4 +1,4 @@
-package zone.informatik.java.graphics.trans;
+package de.winzermuseum.java.photoshop.trans;
 
 
 /**
