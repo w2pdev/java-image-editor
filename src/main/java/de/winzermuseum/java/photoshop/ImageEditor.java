@@ -40,7 +40,6 @@ public class ImageEditor implements Runnable
       inputargs[i] = var0[i];
       System.out.println(inputargs[i]);
     }
-    ImageEditor myClass = new ImageEditor();
     inputargs = ImageEditor.inputargs;
   }
 
