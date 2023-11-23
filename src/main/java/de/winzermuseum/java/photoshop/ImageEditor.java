@@ -38,9 +38,7 @@ public class ImageEditor implements Runnable
   {
     setLookAndFeel();
     SwingUtilities.invokeLater(new ImageEditor());
-    for (int i = 0 ; i < var0.length; i++ ){
-      inputargs[i] = var0[i];
-    }
+      System.arraycopy(var0, 0, inputargs, 0, var0.length);
     final boolean temp = Boolean.parseBoolean(ImageEditor.inputargs[0]);
 
     if(temp ==! true ){
