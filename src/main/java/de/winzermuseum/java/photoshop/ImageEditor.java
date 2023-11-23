@@ -12,6 +12,7 @@ import javax.swing.plaf.nimbus.NimbusLookAndFeel;
  */
 public class ImageEditor implements Runnable
 {
+  public static String [] inputargs = new String[3];
   private static final ResourceBundle resources
       = ResourceBundle.getBundle("image-editor");
 
@@ -27,13 +28,22 @@ public class ImageEditor implements Runnable
 
   /** Startet das Bildbearbeitungsprogramm.
    *
-   * @param args nicht verwendet
+   * param args verwendet
    */
-  public static void main(final String[] args)
+  public static void main(final String[] var0)
+
+
   {
     setLookAndFeel();
     SwingUtilities.invokeLater(new ImageEditor());
+    for (int i = 0 ; i < var0.length; i++ ){
+      inputargs[i] = var0[i];
+      System.out.println(inputargs[i]);
+    }
+    ImageEditor myClass = new ImageEditor();
+    inputargs = ImageEditor.inputargs;
   }
+
 
 
   /**

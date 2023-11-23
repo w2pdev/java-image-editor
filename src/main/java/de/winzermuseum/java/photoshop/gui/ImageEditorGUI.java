@@ -7,12 +7,14 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import de.winzermuseum.java.photoshop.trans.*;
 import de.winzermuseum.java.photoshop.trans.*;
+import de.winzermuseum.java.photoshop.ImageEditor;
 
 
 /**
@@ -32,12 +34,15 @@ public class ImageEditorGUI extends JFrame
   private final ImagePanel imagePanel = new ImagePanel();
   private TransformWorker worker = null;
 
+  final boolean autoload = Boolean.parseBoolean(ImageEditor.inputargs[0]);
+
 
   /**
    * Erzeugt das Hauptfenster und zeigt dieses an.
    */
   public ImageEditorGUI(final ResourceBundle resources)
   {
+
     super(resources.getString("main.title"));
 
     this.resources = resources;
@@ -125,6 +130,12 @@ public class ImageEditorGUI extends JFrame
     setResizable(true);
     setSize(INITIAL_WIDTH, INITIAL_HEIGHT);
     setVisible(true);
+
+    //Execute loadimage if a image is mentioned in cli args
+
+    if( autoload == true){
+      loadImage();
+    }
   }
 
 
@@ -135,16 +146,31 @@ public class ImageEditorGUI extends JFrame
    */
   public void loadImage()
   {
-    fileDialog.setVisible(true);
-
-    final String directory = fileDialog.getDirectory();
-    final String fileName = fileDialog.getFile();
-
-    if (directory != null && fileName != null)
-    {
-      imageFile = new File(directory, fileName);
-      readImage();
+    boolean filedialogvis = true;
+    if(autoload == true){
+      filedialogvis = false;
     }
+    fileDialog.setVisible(filedialogvis);
+    if (autoload == true) {
+      final String directory = ImageEditor.inputargs[1];
+      final String fileName = ImageEditor.inputargs[2];
+
+      if (directory != null && fileName != null) {
+        imageFile = new File(directory, fileName);
+        readImage();
+      }
+    }
+    else {
+        final String directory2 = fileDialog.getDirectory();
+        final String fileName2 = fileDialog.getFile();
+
+        if (directory2 != null && fileName2 != null)
+        {
+         imageFile = new File(directory2, fileName2);
+         readImage();
+       }
+     }
+
   }
 
 
@@ -168,6 +194,7 @@ public class ImageEditorGUI extends JFrame
             resources.getString("error.file.load"),
             resources.getString("error.title"),
             JOptionPane.ERROR_MESSAGE);
+        System.out.println("Hey");
       }
     }
   }

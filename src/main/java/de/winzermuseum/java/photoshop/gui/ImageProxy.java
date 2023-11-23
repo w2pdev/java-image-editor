@@ -21,6 +21,7 @@ public interface ImageProxy
    * @param image neues Bild.
    */
   void setImage(final BufferedImage image);
+
 }
 
 
