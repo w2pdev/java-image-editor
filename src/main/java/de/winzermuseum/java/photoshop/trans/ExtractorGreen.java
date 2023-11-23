@@ -1,6 +1,9 @@
 package de.winzermuseum.java.photoshop.trans;
 
 
+import java.security.PublicKey;
+import java.util.Scanner;
+
 /**
  * Extraktion des grünen Farbkanals
  */
@@ -16,8 +19,6 @@ public class ExtractorGreen implements Transformer
     final int numCols = input[0].length;
 
     final int[][] output = new int[numRows][numCols];
-
-    // TODO
 
     return output;
   }

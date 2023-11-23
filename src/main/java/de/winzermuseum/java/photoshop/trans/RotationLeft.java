@@ -18,7 +18,12 @@ public class RotationLeft implements Transformer
 
     final int[][] output = new int[numRows][numCols];
 
-    // TODO
+    for (int i = 0; i < numCols; i++){
+      for (int j = 0; j < numRows; j++){
+        output[numRows - (j+1)][i] = input [i] [j];
+      }
+    }
+
 
     return output;
   }
