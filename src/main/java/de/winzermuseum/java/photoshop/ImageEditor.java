@@ -43,9 +43,17 @@ public class ImageEditor implements Runnable
 
     if(temp ==! true ){
       if(inputargs[0] != null) {
+        inputargs[0] = "false";
+        if(inputargs[1] == null) {
+          inputargs[0] = "false";
+          if(inputargs[2] == null) {
+            inputargs[0] = "false";
+            throw new IOException("Wrong arguments provided");
+          }
+          throw new IOException("Wrong arguments provided");
+        }
+
         throw new IOException("Wrong arguments provided");
-
-
       }
     }
 
