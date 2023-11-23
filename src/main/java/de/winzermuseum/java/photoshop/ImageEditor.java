@@ -3,6 +3,8 @@ package de.winzermuseum.java.photoshop;
 import de.winzermuseum.java.photoshop.gui.ImageEditorGUI;
 
 import java.awt.*;
+import java.io.IOError;
+import java.io.IOException;
 import java.util.ResourceBundle;
 import javax.swing.*;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
@@ -30,7 +32,7 @@ public class ImageEditor implements Runnable
    *
    * param args verwendet
    */
-  public static void main(final String[] var0)
+  public static void main(final String[] var0) throws IOException
 
 
   {
@@ -38,8 +40,17 @@ public class ImageEditor implements Runnable
     SwingUtilities.invokeLater(new ImageEditor());
     for (int i = 0 ; i < var0.length; i++ ){
       inputargs[i] = var0[i];
-      System.out.println(inputargs[i]);
     }
+    final boolean temp = Boolean.parseBoolean(ImageEditor.inputargs[0]);
+
+    if(temp ==! true ){
+      if(inputargs[0] != null) {
+        throw new IOException("Wrong arguments provided");
+
+
+      }
+    }
+
     inputargs = ImageEditor.inputargs;
   }
 
