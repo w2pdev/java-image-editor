@@ -19,6 +19,16 @@ public class ExtractorGreen implements Transformer
     final int numCols = input[0].length;
 
     final int[][] output = new int[numRows][numCols];
+    int Green=0;
+    for(int i=0; i<numCols; i++)
+    {
+      for(int j=0; j<numRows; j++)
+      {
+        Green = input [j][i];
+        Green = Green & 65280 ;
+        output [j][i]= Green;
+      }
+    }
 
     return output;
   }

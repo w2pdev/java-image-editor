@@ -16,10 +16,14 @@ public class ExtractorBlue implements Transformer
     final int numCols = input[0].length;
 
     final int[][] output = new int[numRows][numCols];
-
-    for (int i = 0; i < numRows; i++){
-      for (int j = 0; j < numCols; j++){
-        output[i][j] = input [i] [j] * 2;
+    int Blue=0;
+    for(int i=0; i<numCols; i++)
+    {
+      for(int j=0; j<numRows; j++)
+      {
+        Blue = input [j][i];
+        Blue = Blue & 255 ;
+        output [j][i]= Blue;
       }
     }
 
