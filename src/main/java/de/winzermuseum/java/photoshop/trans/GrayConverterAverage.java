@@ -1,5 +1,6 @@
 package de.winzermuseum.java.photoshop.trans;
 
+import static de.winzermuseum.java.photoshop.utils.ColourModelRGB.*;
 import static java.lang.Math.round;
 
 
@@ -21,13 +22,22 @@ public class GrayConverterAverage implements Transformer
     final int[][] output = new int[numRows][numCols];
 
     int Gray=0;
-    for(int i=0; i<numCols; i++)
+    for(int i=0; i<numRows; i++)
     {
-      for(int j=0; j<numRows; j++)
+      for(int j=0; j<numCols; j++)
       {
-        Gray = input [j][i];
-        Gray = Gray | 8355711;
-        output [j][i]= Gray;
+        int rgb_input = input[i][j];
+        int red = getRed(rgb_input);
+        int green = getGreen(rgb_input);
+        int blue = getBlue(rgb_input);
+
+        int rgb_output_1 = 0;
+        rgb_output_1 = (red + green + blue)/3;
+        int rgb_output;
+        rgb_output = getRGB(rgb_output_1, rgb_output_1, rgb_output_1);
+
+        output[i][j]=rgb_output;
+
       }
     }
 
