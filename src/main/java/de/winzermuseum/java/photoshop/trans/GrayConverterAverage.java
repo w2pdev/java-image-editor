@@ -31,7 +31,7 @@ public class GrayConverterAverage implements Transformer
       }
     }
 
-    return input;
+    return output;
   }
 }
 

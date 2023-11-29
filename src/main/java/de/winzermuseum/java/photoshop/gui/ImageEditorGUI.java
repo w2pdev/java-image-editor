@@ -114,6 +114,13 @@ public class ImageEditorGUI extends JFrame
         "filter-convolution.png",
         e -> filterImage(),
         imageTools));
+    toolBar.addSeparator();
+    toolBar.add(createTool(
+        "action.image.filter.alphatrans",
+        "filter-convolution.png",
+        e -> transform(new TransformAlpha()),
+        imageTools
+    ));
 
     imageTools.forEach(button -> button.setEnabled(false));
 
