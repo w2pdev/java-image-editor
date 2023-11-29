@@ -2,9 +2,11 @@ package de.winzermuseum.java.photoshop.gui;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.Buffer;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Optional;
@@ -54,6 +56,13 @@ public class ImageEditorGUI extends JFrame
         "file-open.png",
         e -> loadImage(),
         null));
+    toolBar.addSeparator();
+    toolBar.add(createTool(
+        "action.file.save",
+        "file-save.png",
+        e -> saveImage(),
+        null));
+    toolBar.addSeparator();
     toolBar.add(createTool(
         "action.file.reload",
         "file-reload.png",
@@ -281,6 +290,22 @@ public class ImageEditorGUI extends JFrame
 
     return button;
   }
+  public void saveImage(){
+    imagePanel.getImage();
+    File outputfile = new File("image.jpg");
+    try
+    {
+      ImageIO.write( imagePanel.getImage(), "jpg", outputfile);
+    }
+    catch (IOException e)
+    {
+      throw new RuntimeException(e);
+    }
+
+
+  }
+
 }
+
 
 
