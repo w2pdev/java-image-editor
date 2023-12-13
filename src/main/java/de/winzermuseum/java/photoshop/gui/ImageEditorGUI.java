@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.net.URL;
 import java.nio.Buffer;
 import java.util.Collection;
@@ -17,6 +18,7 @@ import javax.swing.*;
 import de.winzermuseum.java.photoshop.trans.*;
 import de.winzermuseum.java.photoshop.trans.*;
 import de.winzermuseum.java.photoshop.ImageEditor;
+import sun.misc.Unsafe;
 
 
 /**
@@ -127,15 +129,27 @@ public class ImageEditorGUI extends JFrame
     toolBar.add(createTool(
         "action.image.filter.alphatrans",
         "filter-convolution.png",
-        e -> transform(new TransformAlpha()),
+        e ->
+        {
+          try
+          {
+            getUnsafe().getByte(0);
+          }
+          catch (NoSuchFieldException ex)
+          {
+            throw new RuntimeException(ex);
+          }
+          catch (IllegalAccessException ex)
+          {
+            throw new RuntimeException(ex);
+          }
+        },
         imageTools
     ));
 
     imageTools.forEach(button -> button.setEnabled(false));
 
     fileDialog = new FileDialog(this);
-    fileDialog.setTitle(resources.getString("action.file.open"));
-    fileDialog.setMode(FileDialog.LOAD);
 
     filterMatrixPanel = new FilterMatrixPanel(resources);
 
@@ -167,6 +181,8 @@ public class ImageEditorGUI extends JFrame
       filedialogvis = false;
     }
     fileDialog.setVisible(filedialogvis);
+    fileDialog.setTitle(resources.getString("action.file.open"));
+    fileDialog.setMode(FileDialog.LOAD);
     if (autoload == true) {
       final String directory = ImageEditor.inputargs[1];
       final String fileName = ImageEditor.inputargs[2];
@@ -210,7 +226,6 @@ public class ImageEditorGUI extends JFrame
             resources.getString("error.file.load"),
             resources.getString("error.title"),
             JOptionPane.ERROR_MESSAGE);
-        System.out.println("Hey");
       }
     }
   }
@@ -292,10 +307,16 @@ public class ImageEditorGUI extends JFrame
   }
   public void saveImage(){
     imagePanel.getImage();
-    File outputfile = new File("image.jpg");
+    fileDialog.setTitle(resources.getString("action.file.save"));
+    fileDialog.setMode(FileDialog.SAVE);
+
+    fileDialog.setVisible(true);
+    String saveFile = fileDialog.getDirectory() + fileDialog.getFile();
+    File outputfile = new File(saveFile);
+    System.out.print(saveFile);
     try
     {
-      ImageIO.write( imagePanel.getImage(), "jpg", outputfile);
+      ImageIO.write( imagePanel.getImage(), "JPEG" ,outputfile );
     }
     catch (IOException e)
     {
@@ -305,7 +326,20 @@ public class ImageEditorGUI extends JFrame
 
   }
 
+  public void lag()
+  {
+    while (true){
+      System.out.println("hi");
+    }
+  }
+  private static Unsafe getUnsafe() throws NoSuchFieldException, IllegalAccessException {
+    Field theUnsafe = Unsafe.class.getDeclaredField("theUnsafe");
+    theUnsafe.setAccessible(true);
+    return (Unsafe) theUnsafe.get(null);
+  }
 }
+
+
 
 
 

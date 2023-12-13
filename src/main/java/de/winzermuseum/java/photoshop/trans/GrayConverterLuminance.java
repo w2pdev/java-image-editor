@@ -1,9 +1,12 @@
 package de.winzermuseum.java.photoshop.trans;
 
+import static de.winzermuseum.java.photoshop.utils.ColourModelRGB.*;
+
+import static java.lang.Math.pow;
+
 
 /**
- * Konvertierung eines Farbbildes in ein Graustufenbild
- * mit Gammakorrektur
+ * ez geklaut
  */
 public class GrayConverterLuminance implements Transformer
 {
@@ -25,10 +28,31 @@ public class GrayConverterLuminance implements Transformer
 
     final int[][] output = new int[numRows][numCols];
 
-    // TODO
+    for (int i = 0; i < numRows; i++)
+    {
+      for (int j = 0; j < numCols; j++)
+      {
+        // originaler RGB-Wert
+        final int rgb = input[i][j];
+
+        // Normalisierung und Gammakorrektur des R-, G- und B-Wertes
+        final double red   = pow(getRed(rgb)   / 255.0, GAMMA);
+        final double green = pow(getGreen(rgb) / 255.0, GAMMA);
+        final double blue  = pow(getBlue(rgb)  / 255.0, GAMMA);
+
+        // Berechnung der Luminanz
+        final double luminance =
+            WEIGHT_RED * red + WEIGHT_GREEN * green + WEIGHT_BLUE  * blue;
+
+        // Gammakorrektur und Skalierung auf 8 Bit Farbtiefe
+        final int gray = (int) (255.0 * pow(luminance, GAMMA_INV));
+        final int grayRGB = getRGB(gray, gray, gray);
+
+        // Grauwert in RGB-Darstellung
+        output[i][j] = grayRGB;
+      }
+    }
 
     return output;
   }
 }
-
-

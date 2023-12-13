@@ -32,9 +32,10 @@ public class GrayConverterAverage implements Transformer
         int blue = getBlue(rgb_input);
 
         int rgb_output_1 = 0;
-        rgb_output_1 = (red + green + blue)/3;
+        rgb_output_1 = (int) (round(red + green + blue)/3.0);
         int rgb_output;
         rgb_output = getRGB(rgb_output_1, rgb_output_1, rgb_output_1);
+
 
         output[i][j]=rgb_output;
 
