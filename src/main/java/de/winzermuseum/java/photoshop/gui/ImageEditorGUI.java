@@ -252,17 +252,12 @@ public class ImageEditorGUI extends JFrame
    * Zeigt einen Dialog zur Eingabe der Filterkoeffizienten an.
    * Wendet den Filter an, falls der Dialog mit OK geschlossen wird.
    */
-  private void filterImage()
-  {
-    final int result = JOptionPane.showConfirmDialog(
-        this, filterMatrixPanel,
-        resources.getString("convolution.title"),
-        JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
-
-    if (result == JOptionPane.OK_OPTION)
-    {
-      transform(new Convolution(filterMatrixPanel.getFilterMatrix()));
+  private void filterImage() {
+    int result = JOptionPane.showConfirmDialog(this, this.filterMatrixPanel, this.resources.getString("convolution.title"), 2, -1);
+    if (result == 0) {
+      this.transform(new Convolution(this.filterMatrixPanel.getFilterMatrix(), this.filterMatrixPanel.getScaleFactor()  ));
     }
+
   }
 
 
@@ -326,12 +321,6 @@ public class ImageEditorGUI extends JFrame
 
   }
 
-  public void lag()
-  {
-    while (true){
-      System.out.println("hi");
-    }
-  }
   private static Unsafe getUnsafe() throws NoSuchFieldException, IllegalAccessException {
     Field theUnsafe = Unsafe.class.getDeclaredField("theUnsafe");
     theUnsafe.setAccessible(true);
