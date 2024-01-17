@@ -19,6 +19,7 @@ import de.winzermuseum.java.photoshop.trans.*;
 import de.winzermuseum.java.photoshop.trans.*;
 import de.winzermuseum.java.photoshop.ImageEditor;
 import sun.misc.Unsafe;
+import java.util.Random;
 
 
 /**
@@ -65,6 +66,10 @@ public class ImageEditorGUI extends JFrame
         e -> saveImage(),
         null));
     toolBar.addSeparator();
+    toolBar.add(createTool(
+        "action.file.back",
+        "file-back.png",
+        e -> transform(new back()), imageTools));
     toolBar.add(createTool(
         "action.file.reload",
         "file-reload.png",
@@ -246,7 +251,29 @@ public class ImageEditorGUI extends JFrame
     worker = new TransformWorker(imagePanel, transformer, resources);
     worker.execute();
   }
+private void ramimage(){
 
+    // Instance of random class
+    Random rand = new Random();
+    // Setting the upper bound to generate the
+    // random numbers in specific range
+    int upperbound = 25;
+    // Generating random values from 0 - 24
+    // using nextInt()
+    int int_random = rand.nextInt(upperbound);
+    // Generating random using nextDouble
+    // in 0.0 and 1.0 range
+    double double_random = rand.nextDouble();
+    // Generating random using nextDouble
+    // in 0.0 and 1.0 range
+    float float_random = rand.nextFloat();
+
+    // Printing the generated random numbers
+    System.out.println("Random integer value from 0 to" + (upperbound-1) + " : " + int_random);
+    System.out.println("Random float value between 0.0 and 1.0 : " + float_random);
+    System.out.println("Random double value between 0.0 and 1.0 : " + double_random);
+
+}
 
   /**
    * Zeigt einen Dialog zur Eingabe der Filterkoeffizienten an.
@@ -255,7 +282,7 @@ public class ImageEditorGUI extends JFrame
   private void filterImage() {
     int result = JOptionPane.showConfirmDialog(this, this.filterMatrixPanel, this.resources.getString("convolution.title"), 2, -1);
     if (result == 0) {
-      this.transform(new Convolution(this.filterMatrixPanel.getFilterMatrix(), this.filterMatrixPanel.getScaleFactor()  ));
+      this.transform(new Convolution(this.filterMatrixPanel.getFilterMatrix(), this.filterMatrixPanel.getScaleFactor(), this.filterMatrix.
     }
 
   }

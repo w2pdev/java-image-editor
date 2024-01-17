@@ -2,16 +2,22 @@ package de.winzermuseum.java.photoshop.trans;
 
 import de.winzermuseum.java.photoshop.utils.ColourModelRGB;
 
+import java.util.Random;
+
 /**
  * Faltung des Bildes mit einer Filtermatrix
  */
 public class Convolution implements Transformer {
+  Random rand = new Random();
+  int upperbound = 16777214;
   private final double[][] filter;
   private final double scaleFactor;
+  private final int filtersize;
 
-  public Convolution(double[][] filter, double scaleFactor) {
+  public Convolution(double[][] filter, double scaleFactor, int filtersize) {
     this.filter = filter;
     this.scaleFactor = scaleFactor;
+    this.filtersize;
   }
 
   public int[][] apply(int[][] input) {
@@ -40,6 +46,7 @@ public class Convolution implements Transformer {
             red += this.filter[k][l] * (double)ColourModelRGB.getRed(rgb);
             green += this.filter[k][l] * (double)ColourModelRGB.getGreen(rgb);
             blue += this.filter[k][l] * (double)ColourModelRGB.getBlue(rgb);
+
           }
         }
 
