@@ -282,7 +282,7 @@ private void ramimage(){
   private void filterImage() {
     int result = JOptionPane.showConfirmDialog(this, this.filterMatrixPanel, this.resources.getString("convolution.title"), 2, -1);
     if (result == 0) {
-      this.transform(new Convolution(this.filterMatrixPanel.getFilterMatrix(), this.filterMatrixPanel.getScaleFactor(), this.filterMatrix.
+      this.transform(new Convolution(this.filterMatrixPanel.getFilterMatrix(), this.filterMatrixPanel.getScaleFactor()));
     }
 
   }

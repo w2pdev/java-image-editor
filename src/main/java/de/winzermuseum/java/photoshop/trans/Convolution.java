@@ -12,12 +12,10 @@ public class Convolution implements Transformer {
   int upperbound = 16777214;
   private final double[][] filter;
   private final double scaleFactor;
-  private final int filtersize;
 
-  public Convolution(double[][] filter, double scaleFactor, int filtersize) {
+  public Convolution(double[][] filter, double scaleFactor) {
     this.filter = filter;
     this.scaleFactor = scaleFactor;
-    this.filtersize;
   }
 
   public int[][] apply(int[][] input) {
